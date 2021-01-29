@@ -1,25 +1,51 @@
+import { useState } from 'react';
 import './App.css';
-import TextareaMarkdown from 'textarea-markdown';
+const ReactMarkdown = require('react-markdown')
+const markdown = `# hello
+## howdy
 
-document.addEventListener('DOMContentLoaded', () => {
-  const editor = document.querySelector('#editor');
-  new TextareaMarkdown(editor, {
-    endPoint: 'http://localhost:3000/api/image.json',
-    paramName: 'file',
-    responseKey: 'url'
-  });
-});
+1. list item 1
+2. list item 2
+  - sublist item 1
+`
+
+
+function Editor() {
+  const [editor, setPreview] = useState();
+
+  const handleChange = (e) => {
+    setPreview(e.currentTarget.value)
+  }
+  
+  return (
+    <div>
+
+      <h2>Editor</h2>
+      <textarea id="editor" children={markdown} onChange={handleChange} />
+
+      <h2>Preview</h2>
+      <div id="preview">
+        <ReactMarkdown>
+            {editor}
+          </ReactMarkdown>
+      </div>
+
+    </div>
+  )
+}
+
+// function Preview() {
+//   return (
+//   )
+// }
 
 function App() {
   return (
-    <div>
-      <h2>Editor</h2>
-      <textarea id="editor" data-preview="#preview"></textarea>
-
-      <h2>Preview</h2>
-      <div id="preview"></div>
+    <div className="app">
+      <Editor />
+      {/* <Preview /> */}
     </div>
-  );
+  ); 
 }
 
 export default App;

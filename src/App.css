@@ -7,15 +7,18 @@ body {
   height: 100vh;
 }
 
-.app {
-  
+#editor {
+  width: 500px;
+  height: 250px;
+}
+#preview {
+  width: 600px;
+  height: 300px;
 }
 
 #editor,
 #preview {
   border: 1px solid black;
-  width: 400px;
-  height: 200px;
   background-color: white;
   overflow: scroll;
 }

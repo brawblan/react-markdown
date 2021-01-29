@@ -63,7 +63,7 @@ const Preview = ({editor}) => {
 }
 
 function App() {
-  const [editor, setPreview] = useState();
+  const [editor, setPreview] = useState(markdown);
   useEffect(() => {
     setPreview(editor);
   }, [editor])
